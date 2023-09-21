@@ -1,5 +1,7 @@
 from tkinter import *
 from math import sqrt as sqr
+# Import sin/cos/tan from math
+from math import *
 
 
 class Calculator(Frame):
@@ -74,6 +76,11 @@ class Calculator(Frame):
         e = e.replace("²", "**2")
         e = e.replace("^", "**")
         e = e.replace("÷", "/")
+        
+        # Add trig functions
+        e = e.replace("sin","sin")
+        e = e.replace("cos","cos")
+        e = e.replace("tan","tan")
 
         try:
             ans = eval(e)
@@ -186,7 +193,8 @@ class Calculator(Frame):
         self.six_bttn = Button(self, text="6", width=9, height=3, command=lambda: self.add_chr(6))
         self.six_bttn.grid(row=2, column=2)
 
-        self.one_bttn = Button(self, text="1", width=9, height=3, command=lambda: self.add_chr(1))
+        # Modified "1" button
+        self.one_bttn = Button(self, text="KR", width=9, height=3, command=lambda: self.add_chr("Sch"))
         self.one_bttn.grid(row=3, column=0)
 
         self.two_bttn = Button(self, text="2", width=9, height=3, command=lambda: self.add_chr(2))
@@ -212,6 +220,16 @@ class Calculator(Frame):
 
         self.sqr_bttn = Button(self, text="^", width=9, height=3, command=lambda: self.add_chr('^'))
         self.sqr_bttn.grid(row=3, column=5)
+        
+        # Added trig buttons
+        self.c_bttn = Button(self, text="sin", width=9, height=3, command=lambda: self.add_chr("sin("))
+        self.c_bttn.grid(row=2, column=6 )
+
+        self.c_bttn = Button(self, text="cos", width=9, height=3, command=lambda: self.add_chr("cos("))
+        self.c_bttn.grid(row=3, column=6 )
+
+        self.c_bttn = Button(self, text="tan", width=9, height=3, command=lambda: self.add_chr("tan("))
+        self.c_bttn.grid(row=4, column=6 )
 
 root = Tk()
 root.geometry()
